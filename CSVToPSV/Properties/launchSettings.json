@@ -1,8 +1,1 @@
-{
-  "profiles": {
-    "CSVToPSV": {
-      "commandName": "Project",
-      "commandLineArgs": "C:\\TEMP\\acquisti_2019.xlsx C:\\TEMP\\acquisti_2019.psv "
-    }
-  }
-}
+{}
