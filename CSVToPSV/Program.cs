@@ -53,18 +53,13 @@ namespace ExcelToPSV
 
             FileInfo fileInfo = new FileInfo(source);
 
-            IExcelDataReader reader = null;
-
             StringBuilder csvContent = new StringBuilder();
 
             using (Stream stream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read))
             {
                 System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-                if (fileInfo.FullName.EndsWith(".xls"))
-                    reader = ExcelReaderFactory.CreateBinaryReader(stream);
-                else if (fileInfo.FullName.EndsWith(".xlsx"))
-                    reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                IExcelDataReader reader = fileInfo.Extension.Equals("xls") ? ExcelReaderFactory.CreateBinaryReader(stream) : ExcelReaderFactory.CreateOpenXmlReader(stream);
 
                 while (reader.Read())
                 {
